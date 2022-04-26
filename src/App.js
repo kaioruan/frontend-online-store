@@ -11,6 +11,7 @@ class App extends React.Component {
       categorias: [],
       btnIsLocked: true,
       search: '',
+      didSearch: '',
       produtos: [],
     };
     this.fethcCategorias = this.fethcCategorias.bind(this);
@@ -45,6 +46,7 @@ class App extends React.Component {
     const result = await getProductsFromCategoryAndQuery(undefined, search);
     this.setState({
       produtos: result.results,
+      didSearch: 'Nenhum produto foi encontrado',
     });
   }
 
@@ -54,7 +56,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { categorias, btnIsLocked, search, produtos } = this.state;
+    const { categorias, btnIsLocked, search, produtos, didSearch } = this.state;
     return (
       <main>
         <BrowserRouter>
@@ -67,6 +69,7 @@ class App extends React.Component {
                 btnIsLocked={ btnIsLocked }
                 search={ search }
                 produtos={ produtos }
+                didSearch={ didSearch }
                 onChange={ this.handleChange }
                 onClick={ this.clickSearch }
               />) }

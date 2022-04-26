@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   render() {
-    const { categ, onChange, onClick, btnIsLocked, search, produtos } = this.props;
+    const { categ, onChange, onClick, btnIsLocked, search, produtos, didSearch } = this.props;
     return (
       <div>
         <nav>
@@ -54,7 +54,7 @@ class Home extends React.Component {
                   <p>{ `R$ ${el.price}` }</p>
                 </div>
               ))
-              : <h4>Nenhum produto foi encontrado</h4>
+              : <h4>{ didSearch }</h4>
           }
         </div>
       </div>
@@ -67,6 +67,7 @@ Home.propTypes = {
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
+  didSearch: PropTypes.string.isRequired,
   btnIsLocked: PropTypes.bool.isRequired,
   produtos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 };
