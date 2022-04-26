@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   render() {
-    const { categ, onChange, onClick, btnIsLocked, search, produtos, didSearch } = this.props;
+    const { categ, onChange,
+      onClick, btnIsLocked,
+      search, produtos,
+      didSearch } = this.props;
     return (
       <div>
         <nav>
