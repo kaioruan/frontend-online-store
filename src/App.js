@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
+import DetailsProduct from './pages/DetailsProduct';
 import { getCategories, getProductsFromCategoryAndQuery,
   getCategoriesList } from './services/api';
 
@@ -38,12 +39,12 @@ class App extends React.Component {
 
   async clickCatSearch({ target }) {
     const { id } = target;
-    console.log(id);
+    // console.log(id);
     this.setState({ searchCat: [], didCategorie: 'Carregando...' });
     const result = await getCategoriesList(id);
     this.setState({ searchCat: result.results, didCategorie: '' });
-    const { searchCat } = this.state;
-    console.log(searchCat);
+    // const { searchCat } = this.state;
+    // console.log(searchCat);
   }
 
   btnHandler() {
@@ -93,6 +94,13 @@ class App extends React.Component {
               />) }
             />
             <Route exact path="/cart" render={ () => <Cart /> } />
+            <Route
+              exact
+              path="/:id"
+              render={ (props) => (<DetailsProduct
+                { ...props }
+              />) }
+            />
           </Switch>
         </BrowserRouter>
       </main>
