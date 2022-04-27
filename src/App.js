@@ -2,7 +2,8 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
+import { getCategories, getProductsFromCategoryAndQuery,
+  getCategoriesList } from './services/api';
 
 class App extends React.Component {
   constructor() {
@@ -12,12 +13,15 @@ class App extends React.Component {
       btnIsLocked: true,
       search: '',
       didSearch: '',
+      didCategorie: '',
       produtos: [],
+      searchCat: [],
     };
     this.fethcCategorias = this.fethcCategorias.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.btnHandler = this.btnHandler.bind(this);
     this.clickSearch = this.clickSearch.bind(this);
+    this.clickCatSearch = this.clickCatSearch.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +34,16 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, () => this.btnHandler());
+  }
+
+  async clickCatSearch({ target }) {
+    const { id } = target;
+    console.log(id);
+    this.setState({ searchCat: [], didCategorie: 'Carregando...' });
+    const result = await getCategoriesList(id);
+    this.setState({ searchCat: result.results, didCategorie: '' });
+    const { searchCat } = this.state;
+    console.log(searchCat);
   }
 
   btnHandler() {
@@ -56,7 +70,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { categorias, btnIsLocked, search, produtos, didSearch } = this.state;
+    const { categorias, btnIsLocked, search, produtos,
+      didSearch, searchCat, didCategorie } = this.state;
     return (
       <main>
         <BrowserRouter>
@@ -70,8 +85,11 @@ class App extends React.Component {
                 search={ search }
                 produtos={ produtos }
                 didSearch={ didSearch }
+                searchCat={ searchCat }
+                didCategorie={ didCategorie }
                 onChange={ this.handleChange }
                 onClick={ this.clickSearch }
+                clickCatSearch={ this.clickCatSearch }
               />) }
             />
             <Route exact path="/cart" render={ () => <Cart /> } />
