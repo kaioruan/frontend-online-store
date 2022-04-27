@@ -8,7 +8,8 @@ class Home extends React.Component {
       onClick, btnIsLocked,
       search, produtos,
       didSearch, clickCatSearch,
-      searchCat, didCategorie } = this.props;
+      searchCat, didCategorie,
+      addCartList } = this.props;
     return (
       <div>
         <nav>
@@ -57,6 +58,15 @@ class Home extends React.Component {
                   <img src={ el.thumbnail } alt={ el.title } />
                   <p>{ el.title }</p>
                   <p>{ `R$ ${el.price}` }</p>
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    value={ JSON.stringify(el) }
+                    onClick={ addCartList }
+                  >
+                    Adicionar ao Carrinho
+
+                  </button>
                 </div>
               ))
               : <h4>{ didSearch }</h4>
@@ -77,6 +87,15 @@ class Home extends React.Component {
                     Detalhes do Produto
 
                   </Link>
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    value={ JSON.stringify(value) }
+                    onClick={ addCartList }
+                  >
+                    Adicionar ao Carrinho
+
+                  </button>
                 </div>
               ))
               : <h4>{ didCategorie }</h4>
@@ -92,6 +111,7 @@ Home.propTypes = {
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   clickCatSearch: PropTypes.func.isRequired,
+  addCartList: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   didSearch: PropTypes.string.isRequired,
   didCategorie: PropTypes.string.isRequired,
