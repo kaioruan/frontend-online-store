@@ -17,7 +17,6 @@ class DetailsProduct extends Component {
 
   searchDetails = async () => {
     const { match: { params: { id } } } = this.props;
-    console.log(id);
     this.setState({ details: [] });
     const result = await getProductDetails(id);
     this.setState({ details: [result] }, () => {
@@ -26,7 +25,6 @@ class DetailsProduct extends Component {
 
   render() {
     const { details } = this.state;
-    console.log(details);
     return (
       <div>
         <nav>

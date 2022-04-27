@@ -17,6 +17,8 @@ class App extends React.Component {
       didCategorie: '',
       produtos: [],
       searchCat: [],
+      cartList: [],
+      quantidade: [],
     };
     this.fethcCategorias = this.fethcCategorias.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -37,14 +39,19 @@ class App extends React.Component {
     }, () => this.btnHandler());
   }
 
+  addCartList = ({ target }) => {
+    const { value } = target;
+    const list = JSON.parse(value);
+    const { cartList, quantidade } = this.state;
+    cartList.push(list);
+    quantidade.push(cartList);
+  }
+
   async clickCatSearch({ target }) {
     const { id } = target;
-    // console.log(id);
     this.setState({ searchCat: [], didCategorie: 'Carregando...' });
     const result = await getCategoriesList(id);
     this.setState({ searchCat: result.results, didCategorie: '' });
-    // const { searchCat } = this.state;
-    // console.log(searchCat);
   }
 
   btnHandler() {
@@ -72,7 +79,7 @@ class App extends React.Component {
 
   render() {
     const { categorias, btnIsLocked, search, produtos,
-      didSearch, searchCat, didCategorie } = this.state;
+      didSearch, searchCat, didCategorie, cartList, quantidade } = this.state;
     return (
       <main>
         <BrowserRouter>
@@ -88,12 +95,20 @@ class App extends React.Component {
                 didSearch={ didSearch }
                 searchCat={ searchCat }
                 didCategorie={ didCategorie }
+                addCartList={ this.addCartList }
                 onChange={ this.handleChange }
                 onClick={ this.clickSearch }
                 clickCatSearch={ this.clickCatSearch }
               />) }
             />
-            <Route exact path="/cart" render={ () => <Cart /> } />
+            <Route
+              exact
+              path="/cart"
+              render={ () => (<Cart
+                cartList={ cartList }
+                quantidade={ quantidade }
+              />) }
+            />
             <Route
               exact
               path="/:id"
