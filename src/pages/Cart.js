@@ -7,7 +7,7 @@ class Cart extends React.Component {
     return (
       <div>
         <div>
-          {cartList
+          {cartList.length > 0
             ? cartList.map((value) => (
               <div key={ value.id }>
                 <p data-testid="shopping-cart-product-name">{ value.title }</p>

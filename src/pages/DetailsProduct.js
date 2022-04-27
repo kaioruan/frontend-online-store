@@ -24,6 +24,7 @@ class DetailsProduct extends Component {
   }
 
   render() {
+    const { addCartList } = this.props;
     const { details } = this.state;
     return (
       <div>
@@ -53,6 +54,15 @@ class DetailsProduct extends Component {
                   </li>
                 ))}
               </ul>
+              <button
+                type="button"
+                data-testid="product-detail-add-to-cart"
+                value={ JSON.stringify(value) }
+                onClick={ addCartList }
+              >
+                Adicionar ao Carrinho
+
+              </button>
             </div>
           ))}
         </div>
@@ -62,7 +72,12 @@ class DetailsProduct extends Component {
 }
 
 DetailsProduct.propTypes = {
-  match: PropTypes.objectOf(PropTypes.objectOf(PropTypes.any)).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+  addCartList: PropTypes.func.isRequired,
 };
 
 export default DetailsProduct;
