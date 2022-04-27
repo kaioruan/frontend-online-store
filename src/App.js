@@ -18,7 +18,6 @@ class App extends React.Component {
       produtos: [],
       searchCat: [],
       cartList: [],
-      quantidade: [],
     };
     this.fethcCategorias = this.fethcCategorias.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -42,9 +41,8 @@ class App extends React.Component {
   addCartList = ({ target }) => {
     const { value } = target;
     const list = JSON.parse(value);
-    const { cartList, quantidade } = this.state;
+    const { cartList } = this.state;
     cartList.push(list);
-    quantidade.push(cartList);
   }
 
   async clickCatSearch({ target }) {
@@ -79,7 +77,7 @@ class App extends React.Component {
 
   render() {
     const { categorias, btnIsLocked, search, produtos,
-      didSearch, searchCat, didCategorie, cartList, quantidade } = this.state;
+      didSearch, searchCat, didCategorie, cartList } = this.state;
     return (
       <main>
         <BrowserRouter>
@@ -106,7 +104,6 @@ class App extends React.Component {
               path="/cart"
               render={ () => (<Cart
                 cartList={ cartList }
-                quantidade={ quantidade }
               />) }
             />
             <Route
@@ -114,6 +111,7 @@ class App extends React.Component {
               path="/:id"
               render={ (props) => (<DetailsProduct
                 { ...props }
+                addCartList={ this.addCartList }
               />) }
             />
           </Switch>
