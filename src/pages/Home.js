@@ -7,7 +7,8 @@ class Home extends React.Component {
     const { categ, onChange,
       onClick, btnIsLocked,
       search, produtos,
-      didSearch } = this.props;
+      didSearch, clickCatSearch,
+      searchCat, didCategorie } = this.props;
     return (
       <div>
         <nav>
@@ -41,6 +42,7 @@ class Home extends React.Component {
                 id={ el.id }
                 name={ el.name }
                 data-testid="category"
+                onClick={ clickCatSearch }
               >
                 { el.name }
               </button>
@@ -60,6 +62,19 @@ class Home extends React.Component {
               : <h4>{ didSearch }</h4>
           }
         </div>
+        <div>
+          {
+            searchCat.length > 0
+              ? searchCat.map((value) => (
+                <div key={ value.id } data-testid="product">
+                  <img src={ value.thumbnail } alt={ value.title } />
+                  <p>{ value.title }</p>
+                  <p>{ `R$ ${value.price}` }</p>
+                </div>
+              ))
+              : <h4>{ didCategorie }</h4>
+          }
+        </div>
       </div>
     );
   }
@@ -69,10 +84,13 @@ Home.propTypes = {
   categ: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  clickCatSearch: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   didSearch: PropTypes.string.isRequired,
+  didCategorie: PropTypes.string.isRequired,
   btnIsLocked: PropTypes.bool.isRequired,
   produtos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
+  searchCat: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 };
 
 export default Home;
