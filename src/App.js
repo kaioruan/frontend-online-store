@@ -43,6 +43,7 @@ class App extends React.Component {
     const list = JSON.parse(value);
     const { cartList } = this.state;
     cartList.push(list);
+    localStorage.setItem('cart', JSON.stringify(cartList));
   }
 
   async clickCatSearch({ target }) {
@@ -77,7 +78,7 @@ class App extends React.Component {
 
   render() {
     const { categorias, btnIsLocked, search, produtos,
-      didSearch, searchCat, didCategorie, cartList } = this.state;
+      didSearch, searchCat, didCategorie } = this.state;
     return (
       <main>
         <BrowserRouter>
@@ -102,9 +103,7 @@ class App extends React.Component {
             <Route
               exact
               path="/cart"
-              render={ () => (<Cart
-                cartList={ cartList }
-              />) }
+              component={ Cart }
             />
             <Route
               exact
