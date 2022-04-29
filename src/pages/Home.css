@@ -1,0 +1,72 @@
+.header {
+  background-color: green;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+}
+
+
+.search {
+  justify-content: space-between;
+  margin-left: 500px;
+  margin-top: 20px;
+}
+
+.search input {
+  border-radius: 10px;
+  height: 30px;
+  width: 500px;
+}
+
+.search button {
+  background-color: rgb(14, 92, 29);
+  border-radius: 10px;
+  color: white;
+  height: 30px;
+  margin-left: 5px;
+  width: 100px;
+}
+
+.carrinho {
+  color: white;
+  margin-left: 400px;
+  margin-top: 30px;
+}
+
+.lista {
+  display: block;
+  flex-direction: column;
+  height: 600px;
+  margin-top: 5px;
+  overflow: scroll;
+  width: 330px;
+}
+
+.lista ul {
+  display: block;
+  margin-top: 1px;
+}
+
+.lista button {
+  background-color: green;
+  border-radius: 10px;
+  color: white;
+  height: 30px;
+  margin-top: 10px;
+  width: 250px;
+}
+
+.texto {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.produtos {
+  display: flex;
+}
+
+.produtoslista {
+  display: flex;
+  height: 500px;
+}
