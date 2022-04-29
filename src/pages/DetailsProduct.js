@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getProductDetails } from '../services/api';
+import Comentarios from '../components/Comentarios';
 
 class DetailsProduct extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class DetailsProduct extends Component {
   }
 
   render() {
+    const { match: { params: { id } } } = this.props;
     const { addCartList } = this.props;
     const { details } = this.state;
     return (
@@ -66,6 +68,7 @@ class DetailsProduct extends Component {
             </div>
           ))}
         </div>
+        <Comentarios id={ id } />
       </div>
     );
   }
