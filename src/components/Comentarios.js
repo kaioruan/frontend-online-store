@@ -60,7 +60,7 @@ class Comentarios extends Component {
       email: '',
       check: '',
       textArea: '',
-    });
+    }, () => this.getAvaliacao());
   }
 
   getAvaliacao = () => {
@@ -77,17 +77,15 @@ class Comentarios extends Component {
     return (
       <section>
         <form>
-          <label htmlFor="email">
-            Email:
-            <input
-              onChange={ this.handleChange }
-              value={ email }
-              name="email"
-              id="email"
-              data-testid="product-detail-email"
-              type="email"
-            />
-          </label>
+          <input
+            onChange={ this.handleChange }
+            value={ email }
+            name="email"
+            id="email"
+            placeholder="Email"
+            data-testid="product-detail-email"
+            type="email"
+          />
 
           <label htmlFor="comentario">
             Comentários:
@@ -165,7 +163,7 @@ class Comentarios extends Component {
           <button
             value={ id }
             data-testid="submit-review-btn"
-            type="submit"
+            type="button"
             disabled={ btnSubimit }
             onClick={ this.saveForm }
           >
@@ -176,9 +174,9 @@ class Comentarios extends Component {
         <div>
           {filterDados.length > 0 ? filterDados.map((elm, index) => (
             <div key={ index }>
-              <p data-testid="product-detail-email">{`Email: ${elm.email}` }</p>
-              <p>{`Nota: ${elm.check}` }</p>
-              <p>{`Comentário: ${elm.textArea}`}</p>
+              <p>{ elm.email }</p>
+              <p>{ elm.check }</p>
+              <p>{ elm.textArea }</p>
             </div>
           )) : <p> </p>}
         </div>

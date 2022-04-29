@@ -63,7 +63,6 @@ class DetailsProduct extends Component {
                 onClick={ addCartList }
               >
                 Adicionar ao Carrinho
-
               </button>
             </div>
           ))}

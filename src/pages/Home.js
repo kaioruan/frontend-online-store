@@ -70,6 +70,13 @@ class Home extends React.Component {
                     <img src={ el.thumbnail } alt={ el.title } />
                     <p>{ el.title }</p>
                     <p>{ `R$ ${el.price}` }</p>
+                    <Link
+                      to={ `/${el.id}` }
+                      data-testid="product-detail-link"
+                    >
+                      Detalhes do Produto
+
+                    </Link>
                     <button
                       type="button"
                       data-testid="product-add-to-cart"
