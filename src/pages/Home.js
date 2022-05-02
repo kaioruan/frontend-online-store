@@ -12,7 +12,7 @@ class Home extends React.Component {
       searchCat, didCategorie,
       addCartList } = this.props;
     return (
-      <div>
+      <div className="fundo">
         <div className="header">
           <div className="search">
             <input
@@ -34,7 +34,14 @@ class Home extends React.Component {
           </div>
           <div className="carrinho">
             <nav>
-              <Link to="/cart" data-testid="shopping-cart-button">🛒</Link>
+              <Link
+                to="/cart"
+                data-testid="shopping-cart-button"
+                className="carrinho"
+              >
+                🛒
+
+              </Link>
             </nav>
           </div>
         </div>
@@ -66,7 +73,7 @@ class Home extends React.Component {
             {
               produtos.length > 0
                 ? produtos.map((el) => (
-                  <div key={ el.id } data-testid="product">
+                  <div key={ el.id } data-testid="product" className="list">
                     <img src={ el.thumbnail } alt={ el.title } />
                     <p>{ el.title }</p>
                     <p>{ `R$ ${el.price}` }</p>
@@ -90,36 +97,34 @@ class Home extends React.Component {
                 ))
                 : <h4>{ didSearch }</h4>
             }
+            {
+              searchCat.length > 0
+                ? searchCat.map((value) => (
+                  <div key={ value.id } data-testid="product" className="list">
+                    <img src={ value.thumbnail } alt={ value.title } />
+                    <p>{ value.title }</p>
+                    <p>{ `R$ ${value.price}` }</p>
+                    <Link
+                      to={ `/${value.id}` }
+                      data-testid="product-detail-link"
+                    >
+                      Detalhes do Produto
+
+                    </Link>
+                    <button
+                      type="button"
+                      data-testid="product-add-to-cart"
+                      value={ JSON.stringify(value) }
+                      onClick={ addCartList }
+                    >
+                      Adicionar ao Carrinho
+
+                    </button>
+                  </div>
+                ))
+                : <h4>{ didCategorie }</h4>
+            }
           </div>
-        </div>
-        <div>
-          {
-            searchCat.length > 0
-              ? searchCat.map((value) => (
-                <div key={ value.id } data-testid="product">
-                  <img src={ value.thumbnail } alt={ value.title } />
-                  <p>{ value.title }</p>
-                  <p>{ `R$ ${value.price}` }</p>
-                  <Link
-                    to={ `/${value.id}` }
-                    data-testid="product-detail-link"
-                  >
-                    Detalhes do Produto
-
-                  </Link>
-                  <button
-                    type="button"
-                    data-testid="product-add-to-cart"
-                    value={ JSON.stringify(value) }
-                    onClick={ addCartList }
-                  >
-                    Adicionar ao Carrinho
-
-                  </button>
-                </div>
-              ))
-              : <h4>{ didCategorie }</h4>
-          }
         </div>
       </div>
     );

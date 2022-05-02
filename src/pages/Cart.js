@@ -1,4 +1,5 @@
 import React from 'react';
+import './Cart.css';
 
 class Cart extends React.Component {
   constructor() {
@@ -102,48 +103,52 @@ class Cart extends React.Component {
 
     return (
       <div>
-        <div>
+        <div className="carrinholista">
           {state.cart.length > 0
             ? cart.map((value) => (
-              <div key={ value.id }>
+              <div key={ value.id } className="listacarrinho">
                 <p data-testid="shopping-cart-product-name">{ value.title }</p>
                 <img src={ value.thumbnail } alt={ value.title } />
                 <p>{ `R$: ${value.price * state[`${value.id}`]}` }</p>
-                <button
-                  type="button"
-                  data-testid="product-decrease-quantity"
-                  disabled={ btnLock }
-                  name={ value.id }
-                  value={ value.price }
-                  onClick={ this.decrementar }
-                >
-                  -
-                </button>
-                <p data-testid="shopping-cart-product-quantity">
-                  {state[`${value.id}`]}
-                </p>
-                <button
-                  type="button"
-                  data-testid="product-increase-quantity"
-                  name={ value.id }
-                  value={ value.price }
-                  onClick={ this.incrementar }
-                >
-                  +
-                </button>
-                <button
-                  type="button"
-                  name={ value.id }
-                  value={ value.price }
-                  onClick={ this.delete }
-                >
-                  X
-                </button>
+                <div className="buttons">
+                  <button
+                    type="button"
+                    name={ value.id }
+                    value={ value.price }
+                    onClick={ this.delete }
+                  >
+                    X
+                  </button>
+                  <p data-testid="shopping-cart-product-quantity">
+                    {state[`${value.id}`]}
+                  </p>
+                  <button
+                    type="button"
+                    data-testid="product-decrease-quantity"
+                    disabled={ btnLock }
+                    name={ value.id }
+                    value={ value.price }
+                    onClick={ this.decrementar }
+                  >
+                    -
+                  </button>
+                  <button
+                    type="button"
+                    data-testid="product-increase-quantity"
+                    name={ value.id }
+                    value={ value.price }
+                    onClick={ this.incrementar }
+                  >
+                    +
+                  </button>
+                </div>
               </div>))
             : <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>}
         </div>
-        <h1>{ `Total: R$${total}` }</h1>
-        <button type="button">Finalizar</button>
+        <div className="finalizar">
+          <h1>{ `Total: R$${total}` }</h1>
+          <button type="button">Finalizar</button>
+        </div>
       </div>
     );
   }

@@ -1,3 +1,7 @@
+.fundo {
+  background-color: darkgray;
+}
+
 .header {
   background-color: green;
   display: flex;
@@ -7,14 +11,24 @@
 
 
 .search {
+  display: flex;
   justify-content: space-between;
-  margin-left: 500px;
+  margin-left: 400px;
   margin-top: 20px;
 }
 
 .search input {
+  background-image: linear-gradient(120deg, #3c3c3c, #585858);
+  border: 3px solid rgb(127, 170, 170);
   border-radius: 10px;
-  height: 30px;
+  color: rgb(127, 170, 170);
+  cursor: pointer;
+  font-family: Arial , Helvetica , sans-serif;
+  font-size: 17px;
+  height: 15px;
+  max-width: 500px;
+  padding: 7px 12px;
+  transition: all 1s;
   width: 500px;
 }
 
@@ -24,14 +38,18 @@
   color: white;
   height: 30px;
   margin-left: 5px;
+  margin-top: 2px;
   width: 100px;
 }
 
 .carrinho {
   color: white;
-  margin-left: 400px;
-  margin-top: 30px;
+  font-size: 30px;
+  margin-left: 180px;
+  margin-top: 20px;
+  width: 100px;
 }
+
 
 .lista {
   display: block;
@@ -39,7 +57,7 @@
   height: 600px;
   margin-top: 5px;
   overflow: scroll;
-  width: 330px;
+  width: 315px;
 }
 
 .lista ul {
@@ -67,6 +85,56 @@
 }
 
 .produtoslista {
-  display: flex;
-  height: 500px;
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px 3px #06093ec9;
+  color: black;
+  display: inline-block;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+  margin-left: 20px;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  width: 1200px;
+}
+
+.list {
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 50px solid black;
+  display: inline-block;
+  flex-wrap: wrap;
+  height: 400px;
+  margin-left: 50px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 300px;
+}
+
+.list img {
+  height: 160px;
+  max-height: 160px;
+  max-width: 200px;
+  width: 200px;
+}
+
+.list button {
+  background-color: green;
+  border-radius: 1em;
+  color: black;
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 20px;
+  outline: none;
+  padding: 1em 3em;
+  position: relative;
+  text-shadow: 0 0 0.2em var(--glow-color);
+  transition: all 0.3s;
+}
+
+.search input:focus {
+  outline-color: rgb(127, 170, 170);
 }

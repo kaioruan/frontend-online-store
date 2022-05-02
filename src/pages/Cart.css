@@ -1,0 +1,60 @@
+.carrinholista {
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px 3px #06093ec9;
+  color: black;
+  display: inline-block;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+  margin-left: 55px;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  width: 1500px;
+}
+
+.listacarrinho {
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 50px solid black;
+  display: inline-block;
+  flex-wrap: wrap;
+  font-size: 15px;
+  height: 350px;
+  margin-left: 50px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 350px;
+}
+
+.finalizar {
+  align-items: center;
+  justify-content: center;
+  margin-left: 720px;
+}
+
+.finalizar button {
+  background-color: green;
+  border-radius: 20px;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 100px;
+  width: 150px;
+}
+
+.buttons button {
+  background-color: green;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 10px;
+  width: 30px;
+}
+
+.buttons {
+  font-size: 20px;
+  font-weight: 800;
+}

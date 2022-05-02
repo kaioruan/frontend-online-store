@@ -48,7 +48,7 @@ class App extends React.Component {
 
   async clickCatSearch({ target }) {
     const { id } = target;
-    this.setState({ searchCat: [], didCategorie: 'Carregando...' });
+    this.setState({ searchCat: [], didCategorie: 'Carregando...', produtos: [] });
     const result = await getCategoriesList(id);
     this.setState({ searchCat: result.results, didCategorie: '' });
   }
@@ -66,6 +66,7 @@ class App extends React.Component {
     const { search } = this.state;
     const result = await getProductsFromCategoryAndQuery(undefined, search);
     this.setState({
+      searchCat: [],
       produtos: result.results,
       didSearch: 'Nenhum produto foi encontrado',
     });
