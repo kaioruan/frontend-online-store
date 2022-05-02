@@ -13,7 +13,7 @@
 .search {
   display: flex;
   justify-content: space-between;
-  margin-left: 400px;
+  margin-left: 35%;
   margin-top: 20px;
 }
 
@@ -45,7 +45,7 @@
 .carrinho {
   color: white;
   font-size: 30px;
-  margin-left: 180px;
+  margin-left: 20%;
   margin-top: 20px;
   width: 100px;
 }
@@ -78,6 +78,7 @@
   display: flex;
   height: 50px;
   justify-content: center;
+  margin-left: 10%;
 }
 
 .produtos {
@@ -97,7 +98,7 @@
   margin-right: 1rem;
   padding: 0.5rem;
   text-align: center;
-  width: 1200px;
+  width: 80%;
 }
 
 .list {
