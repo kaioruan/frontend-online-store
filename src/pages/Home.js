@@ -38,6 +38,12 @@ class Home extends React.Component {
                     <img src={ el.thumbnail } alt={ el.title } />
                     <p>{ el.title }</p>
                     <p>{ `R$ ${el.price}` }</p>
+                    <div>
+                      {
+                        el.shipping.free_shipping
+                        && <p data-testid="free-shipping">Frete Grátis!</p>
+                      }
+                    </div>
                     <Link
                       to={ `/${el.id}` }
                       data-testid="product-detail-link"
@@ -65,6 +71,12 @@ class Home extends React.Component {
                     <img src={ value.thumbnail } alt={ value.title } />
                     <p>{ value.title }</p>
                     <p>{ `R$ ${value.price}` }</p>
+                    <div>
+                      {
+                        value.shipping.free_shipping
+                        && <p data-testid="free-shipping">Frete Grátis!</p>
+                      }
+                    </div>
                     <Link
                       to={ `/${value.id}` }
                       data-testid="product-detail-link"

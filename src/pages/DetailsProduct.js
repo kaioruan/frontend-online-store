@@ -41,6 +41,12 @@ class DetailsProduct extends Component {
                   {' '}
                   { value.price }
                 </p>
+                <div>
+                  {
+                    value.shipping.free_shipping
+                  && <p data-testid="free-shipping">Frete Grátis!</p>
+                  }
+                </div>
                 <div className="especificacoes">
                   <img src={ value.thumbnail } alt={ value.title } />
                   <div className="infoDetails">
