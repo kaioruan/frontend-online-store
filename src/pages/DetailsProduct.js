@@ -44,7 +44,7 @@ class DetailsProduct extends Component {
                 <div className="especificacoes">
                   <img src={ value.thumbnail } alt={ value.title } />
                   <div className="infoDetails">
-                    <h3>Especifichções Técnicas</h3>
+                    <h3>Especificações Técnicas</h3>
                     <ul>
                       {value.attributes.map((el) => (
                         <li key={ el.id }>

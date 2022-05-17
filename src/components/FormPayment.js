@@ -19,194 +19,191 @@ class FormPayment extends Component {
       handleChangeClient,
     } = this.props;
     return (
-      <section className="payment">
+      <form className="payment">
+        <fieldset className="test">
+          <legend> Dados Pessoais</legend>
 
-        <form>
-          <fieldset className="test">
-            <legend> Dados Pessoais</legend>
+          <label htmlFor="Nome">
+            Nome:
+            <input
+              data-testid="checkout-fullname"
+              type="text"
+              value={ nome }
+              name="nome"
+              onChange={ handleChangeClient }
+              placeholder="Nome"
+            />
 
-            <label htmlFor="Nome">
-              Nome:
-              <input
-                data-testid="checkout-fullname"
-                type="text"
-                value={ nome }
-                name="nome"
-                onChange={ handleChangeClient }
-                placeholder="Nome"
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Cpf">
+            Cpf:
+            <input
+              data-testid="checkout-cpf"
+              type="text"
+              value={ cpf }
+              name="cpf"
+              onChange={ handleChangeClient }
+            />
 
-            <label htmlFor="Cpf">
-              Cpf:
-              <input
-                data-testid="checkout-cpf"
-                type="text"
-                value={ cpf }
-                name="cpf"
-                onChange={ handleChangeClient }
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Email">
+            Email:
+            <input
+              data-testid="checkout-email"
+              type="email"
+              value={ email }
+              name="email"
+              onChange={ handleChangeClient }
+            />
 
-            <label htmlFor="Email">
-              Email:
-              <input
-                data-testid="checkout-email"
-                type="email"
-                value={ email }
-                name="email"
-                onChange={ handleChangeClient }
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Telefone">
+            Telefone:
+            <input
+              data-testid="checkout-phone"
+              type="text"
+              value={ telefone }
+              name="telefone"
+              onChange={ handleChangeClient }
+            />
 
-            <label htmlFor="Telefone">
-              Telefone:
-              <input
-                data-testid="checkout-phone"
-                type="text"
-                value={ telefone }
-                name="telefone"
-                onChange={ handleChangeClient }
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Cep">
+            Cep:
+            <input
+              data-testid="checkout-cep"
+              type="text"
+              value={ cep }
+              name="cep"
+              onChange={ handleChangeClient }
+            />
 
-            <label htmlFor="Cep">
-              Cep:
-              <input
-                data-testid="checkout-cep"
-                type="text"
-                value={ cep }
-                name="cep"
-                onChange={ handleChangeClient }
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Endereço">
+            Endereço:
+            <input
+              data-testid="checkout-address"
+              type="text"
+              value={ endereco }
+              name="endereco"
+              onChange={ handleChangeClient }
+            />
 
-            <label htmlFor="Endereço">
-              Endereço:
-              <input
-                data-testid="checkout-address"
-                type="text"
-                value={ endereco }
-                name="endereco"
-                onChange={ handleChangeClient }
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Complemento">
+            Complemento:
+            <input
+              type="text"
+              value={ complemento }
+              name="complemento"
+              onChange={ handleChangeClient }
 
-            <label htmlFor="Complemento">
-              Complemento:
-              <input
-                type="text"
-                value={ complemento }
-                name="complemento"
-                onChange={ handleChangeClient }
+            />
 
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Número">
+            Número:
+            <input
+              type="text"
+              value={ numero }
+              name="numero"
+              onChange={ handleChangeClient }
+            />
+          </label>
 
-            <label htmlFor="Número">
-              Número:
-              <input
-                type="text"
-                value={ numero }
-                name="numero"
-                onChange={ handleChangeClient }
-              />
-            </label>
+          <label htmlFor="Cidade">
+            Cidade:
+            <input
+              type="text"
+              value={ cidade }
+              name="cidade"
+              onChange={ handleChangeClient }
+            />
 
-            <label htmlFor="Cidade">
-              Cidade:
-              <input
-                type="text"
-                value={ cidade }
-                name="cidade"
-                onChange={ handleChangeClient }
-              />
+          </label>
 
-            </label>
+          <label htmlFor="Estado">
+            Estado:
+            <select
+              value={ estado }
+              name="estado"
+              onChange={ handleChangeClient }
+            >
+              <option>MG</option>
+              <option>SP</option>
+              <option>AM</option>
+              <option>RJ</option>
+              <option>GO</option>
+              <option>TI</option>
+              <option>SC</option>
+              <option>BA</option>
+              <option>RS</option>
+            </select>
+          </label>
+        </fieldset>
+        <fieldset className="test">
 
-            <label htmlFor="Estado">
-              Estado:
-              <select
-                value={ estado }
-                name="estado"
-                onChange={ handleChangeClient }
-              >
-                <option>MG</option>
-                <option>SP</option>
-                <option>AM</option>
-                <option>RJ</option>
-                <option>GO</option>
-                <option>TI</option>
-                <option>SC</option>
-                <option>BA</option>
-                <option>RS</option>
-              </select>
-            </label>
-          </fieldset>
-          <fieldset className="test">
+          <legend>Formas De Pagamento</legend>
 
-            <legend>Formas De Pagamento</legend>
+          <label htmlFor="boleto">
+            Boleto
+            <input
+              id="boleto"
+              value="boleto"
+              type="radio"
+              name="check"
+              onChange={ handleChangeClient }
+            />
+          </label>
 
-            <label htmlFor="boleto">
-              Boleto
-              <input
-                id="boleto"
-                value="boleto"
-                type="radio"
-                name="check"
-                onChange={ handleChangeClient }
-              />
-            </label>
+          <label htmlFor="visa">
+            Visa
+            <input
+              id="visa"
+              value="visa"
+              type="radio"
+              name="check"
+              onChange={ handleChangeClient }
+            />
+          </label>
 
-            <label htmlFor="visa">
-              Visa
-              <input
-                id="visa"
-                value="visa"
-                type="radio"
-                name="check"
-                onChange={ handleChangeClient }
-              />
-            </label>
+          <label htmlFor="masterCard">
+            Master Card
+            <input
+              id="masterCard"
+              value="masterCard"
+              type="radio"
+              name="check"
+              onChange={ handleChangeClient }
+            />
+          </label>
 
-            <label htmlFor="masterCard">
-              Master Card
-              <input
-                id="masterCard"
-                value="masterCard"
-                type="radio"
-                name="check"
-                onChange={ handleChangeClient }
-              />
-            </label>
+          <label htmlFor="elo">
+            Elo
+            <input
+              id="elo"
+              value="elo"
+              type="radio"
+              name="check"
+              onChange={ handleChangeClient }
+            />
+          </label>
 
-            <label htmlFor="elo">
-              Elo
-              <input
-                id="elo"
-                value="elo"
-                type="radio"
-                name="check"
-                onChange={ handleChangeClient }
-              />
-            </label>
-
-          </fieldset>
-          <button
-            type="button"
-            disabled={ btnPayment }
-          >
-            Comprar
-          </button>
-        </form>
-      </section>
+        </fieldset>
+        <button
+          type="button"
+          disabled={ btnPayment }
+        >
+          Comprar
+        </button>
+      </form>
     );
   }
 }
