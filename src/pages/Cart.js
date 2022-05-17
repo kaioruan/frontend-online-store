@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Cart.css';
 
 class Cart extends React.Component {
@@ -50,23 +51,22 @@ class Cart extends React.Component {
     }
   }
 
-  // btnHandler({ target }) {
-  //   const { value } = target;
-  //   const { state } = this;
-  //   const estado = state[`${value}`];
-  //   if (estado > 1) {
-  //     this.setState({ btnLock: false });
-  //   } else {
-  //     this.setState({ btnLock: true });
-  //   }
-  // }
-
   incrementar({ target }) {
     const { name, value } = target;
+    const { cart } = this.state;
     this.setState((prev) => ({
       [name]: prev[name] + 1,
       total: prev.total + Number(value),
-    }));
+    }), () => {
+      const { state } = this;
+      const availableItem = cart.find((el) => el.id === name).available_quantity;
+      if (state[`${name}`] > availableItem) {
+        this.setState((prev) => ({
+          [name]: prev[name] - 1,
+          total: prev.total - Number(value),
+        }));
+      }
+    });
   }
 
   decrementar({ target }) {
@@ -98,58 +98,70 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { cart, btnLock, total } = this.state;
+    const { cart, total } = this.state;
     const { state } = this;
+    const cartVazio = 'shopping-cart-empty-message';
 
     return (
-      <div>
-        <div className="carrinholista">
-          {state.cart.length > 0
-            ? cart.map((value) => (
-              <div key={ value.id } className="listacarrinho">
-                <p data-testid="shopping-cart-product-name">{ value.title }</p>
-                <img src={ value.thumbnail } alt={ value.title } />
-                <p>{ `R$: ${value.price * state[`${value.id}`]}` }</p>
-                <div className="buttons">
-                  <button
-                    type="button"
-                    name={ value.id }
-                    value={ value.price }
-                    onClick={ this.delete }
-                  >
-                    X
-                  </button>
-                  <p data-testid="shopping-cart-product-quantity">
-                    {state[`${value.id}`]}
-                  </p>
-                  <button
-                    type="button"
-                    data-testid="product-decrease-quantity"
-                    disabled={ btnLock }
-                    name={ value.id }
-                    value={ value.price }
-                    onClick={ this.decrementar }
-                  >
-                    -
-                  </button>
-                  <button
-                    type="button"
-                    data-testid="product-increase-quantity"
-                    name={ value.id }
-                    value={ value.price }
-                    onClick={ this.incrementar }
-                  >
-                    +
-                  </button>
-                </div>
-              </div>))
-            : <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>}
+      <section className="sectionPageCart">
+        <div className="cartPage">
+          <div className="carrinholista">
+            {
+              state.cart.length > 0
+                ? cart.map((value) => (
+                  <div key={ value.id } className="listacarrinho">
+                    <p data-testid="shopping-cart-product-name">{ value.title }</p>
+                    <img src={ value.thumbnail } alt={ value.title } />
+                    <p>{ `R$: ${value.price * state[`${value.id}`]}` }</p>
+                    <div className="buttons">
+                      <button
+                        type="button"
+                        name={ value.id }
+                        value={ value.price }
+                        onClick={ this.delete }
+                      >
+                        X
+                      </button>
+                      <p data-testid="shopping-cart-product-quantity">
+                        {state[`${value.id}`]}
+                      </p>
+                      <button
+                        type="button"
+                        data-testid="product-decrease-quantity"
+                        name={ value.id }
+                        value={ value.price }
+                        onClick={ this.decrementar }
+                      >
+                        -
+                      </button>
+                      <button
+                        type="button"
+                        data-testid="product-increase-quantity"
+                        name={ value.id }
+                        value={ value.price }
+                        onClick={ this.incrementar }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>))
+                : <h3 data-testid={ cartVazio }>Seu carrinho está vazio</h3>
+            }
+          </div>
         </div>
         <div className="finalizar">
           <h1>{ `Total: R$${total}` }</h1>
-          <button type="button">Finalizar</button>
+          <Link to="/cart/payment">
+            <button
+              type="button"
+              disabled={ cart.length === 0 }
+              data-testid="checkout-products"
+            >
+              Finalizar
+            </button>
+          </Link>
         </div>
-      </div>
+      </section>
     );
   }
 }

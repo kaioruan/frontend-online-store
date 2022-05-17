@@ -1,7 +1,3 @@
-.fundo {
-  background-color: darkgray;
-}
-
 .header {
   background-color: green;
   display: flex;
@@ -46,16 +42,18 @@
   color: white;
   font-size: 30px;
   margin-left: 20%;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100px;
 }
 
+.carrinho nav {
+  display: flex;
+}
 
 .lista {
   display: block;
   flex-direction: column;
   height: 600px;
-  margin-top: 5px;
   overflow: scroll;
   width: 315px;
 }

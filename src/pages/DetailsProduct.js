@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { getProductDetails } from '../services/api';
 import Comentarios from '../components/Comentarios';
+import './DetailsProduct.css';
 
 class DetailsProduct extends Component {
   constructor() {
@@ -29,46 +29,49 @@ class DetailsProduct extends Component {
     const { addCartList } = this.props;
     const { details } = this.state;
     return (
-      <div>
-        <nav>
-          <Link to="/cart" data-testid="shopping-cart-button">Carrinho</Link>
-        </nav>
-        <div>
-          {details.map((value) => (
-            <div key={ value.id }>
-              <p data-testid="product-detail-name">
-                { value.title }
-                {' '}
-                -R$:
-                {' '}
-                { value.price }
-              </p>
-              <img src={ value.thumbnail } alt={ value.title } />
-              <h3>Especifichções Técnicas</h3>
-              <ul>
-                {value.attributes.map((el) => (
-                  <li key={ el.id }>
-                    { el.name }
-                    {' '}
-                    -
-                    {' '}
-                    { el.value_name }
-                  </li>
-                ))}
-              </ul>
-              <button
-                type="button"
-                data-testid="product-detail-add-to-cart"
-                value={ JSON.stringify(value) }
-                onClick={ addCartList }
-              >
-                Adicionar ao Carrinho
-              </button>
-            </div>
-          ))}
+      <section className="detailsPage">
+        <div className="details">
+          <div className="product">
+            {details.map((value) => (
+              <div key={ value.id }>
+                <p data-testid="product-detail-name">
+                  { value.title }
+                  {' '}
+                  -R$:
+                  {' '}
+                  { value.price }
+                </p>
+                <div className="especificacoes">
+                  <img src={ value.thumbnail } alt={ value.title } />
+                  <div className="infoDetails">
+                    <h3>Especifichções Técnicas</h3>
+                    <ul>
+                      {value.attributes.map((el) => (
+                        <li key={ el.id }>
+                          { el.name }
+                          {' '}
+                          -
+                          {' '}
+                          { el.value_name }
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  data-testid="product-detail-add-to-cart"
+                  value={ JSON.stringify(value) }
+                  onClick={ addCartList }
+                >
+                  Adicionar ao Carrinho
+                </button>
+              </div>
+            ))}
+          </div>
+          <Comentarios id={ id } />
         </div>
-        <Comentarios id={ id } />
-      </div>
+      </section>
     );
   }
 }

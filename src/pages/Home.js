@@ -5,51 +5,12 @@ import './Home.css';
 
 class Home extends React.Component {
   render() {
-    const { categ, onChange,
-      onClick, btnIsLocked,
-      search, produtos,
+    const { categ, produtos,
       didSearch, clickCatSearch,
       searchCat, didCategorie,
       addCartList } = this.props;
     return (
-      <div className="fundo">
-        <div className="header">
-          <div className="search">
-            <input
-              type="text"
-              name="search"
-              value={ search }
-              onChange={ onChange }
-              data-testid="query-input"
-            />
-            <button
-              type="button"
-              name="btn-search"
-              disabled={ btnIsLocked }
-              onClick={ onClick }
-              data-testid="query-button"
-            >
-              Procurar
-            </button>
-          </div>
-          <div className="carrinho">
-            <nav>
-              <Link
-                to="/cart"
-                data-testid="shopping-cart-button"
-                className="carrinho"
-              >
-                🛒
-
-              </Link>
-            </nav>
-          </div>
-        </div>
-        <div className="texto">
-          <h4 data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </h4>
-        </div>
+      <div>
         <div className="produtos">
           <div className="lista">
             <ul>
@@ -133,14 +94,10 @@ class Home extends React.Component {
 
 Home.propTypes = {
   categ: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-  onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
   clickCatSearch: PropTypes.func.isRequired,
   addCartList: PropTypes.func.isRequired,
-  search: PropTypes.string.isRequired,
   didSearch: PropTypes.string.isRequired,
   didCategorie: PropTypes.string.isRequired,
-  btnIsLocked: PropTypes.bool.isRequired,
   produtos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
   searchCat: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 };

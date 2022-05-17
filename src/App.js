@@ -5,6 +5,9 @@ import Cart from './pages/Cart';
 import DetailsProduct from './pages/DetailsProduct';
 import { getCategories, getProductsFromCategoryAndQuery,
   getCategoriesList } from './services/api';
+import Header from './pages/Header';
+import Payment from './pages/Payment';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -24,10 +27,12 @@ class App extends React.Component {
     this.btnHandler = this.btnHandler.bind(this);
     this.clickSearch = this.clickSearch.bind(this);
     this.clickCatSearch = this.clickCatSearch.bind(this);
+    this.fethcCart = this.fethcCart.bind(this);
   }
 
   componentDidMount() {
     this.fethcCategorias();
+    this.fethcCart();
   }
 
   handleChange({ target }) {
@@ -41,9 +46,12 @@ class App extends React.Component {
   addCartList = ({ target }) => {
     const { value } = target;
     const list = JSON.parse(value);
-    const { cartList } = this.state;
-    cartList.push(list);
-    localStorage.setItem('cart', JSON.stringify(cartList));
+    this.setState((prev) => ({
+      cartList: [...prev.cartList, list],
+    }), () => {
+      const { cartList } = this.state;
+      localStorage.setItem('cart', JSON.stringify(cartList));
+    });
   }
 
   async clickCatSearch({ target }) {
@@ -77,12 +85,23 @@ class App extends React.Component {
     this.setState({ categorias: resultado });
   }
 
+  fethcCart() {
+    const resultado = localStorage.getItem('cart');
+    this.setState({ cartList: resultado === null ? [] : JSON.parse(resultado) });
+  }
+
   render() {
     const { categorias, btnIsLocked, search, produtos,
-      didSearch, searchCat, didCategorie } = this.state;
+      didSearch, searchCat, didCategorie, cartList } = this.state;
     return (
-      <main>
+      <main className="page">
         <BrowserRouter>
+          <Header
+            btnIsLocked={ btnIsLocked }
+            search={ search }
+            onChange={ this.handleChange }
+            onClick={ this.clickSearch }
+          />
           <Switch>
             <Route
               exact
@@ -108,10 +127,19 @@ class App extends React.Component {
             />
             <Route
               exact
+              path="/cart/payment"
+              render={ (props) => (<Payment
+                { ...props }
+                cartList={ cartList }
+              />) }
+            />
+            <Route
+              exact
               path="/:id"
               render={ (props) => (<DetailsProduct
                 { ...props }
                 addCartList={ this.addCartList }
+                cartItens={ cartList.length }
               />) }
             />
           </Switch>

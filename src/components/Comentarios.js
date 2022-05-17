@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Comentarios.css';
 import PropTypes from 'prop-types';
 
 class Comentarios extends Component {
@@ -173,10 +174,22 @@ class Comentarios extends Component {
         </form>
         <div>
           {filterDados.length > 0 ? filterDados.map((elm, index) => (
-            <div key={ index }>
-              <p>{ elm.email }</p>
-              <p>{ elm.check }</p>
-              <p>{ elm.textArea }</p>
+            <div key={ index } className="comentario">
+              <p>
+                Email:
+                {' '}
+                { elm.email }
+              </p>
+              <p>
+                Nota:
+                {' '}
+                { elm.check }
+              </p>
+              <p>
+                Comentário:
+                {' '}
+                { elm.textArea }
+              </p>
             </div>
           )) : <p> </p>}
         </div>

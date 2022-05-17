@@ -1,0 +1,25 @@
+.payment {
+  display: block;
+  justify-content: center;
+}
+
+.dados {
+  margin-left: 35rem;
+}
+
+.dados h3 {
+  font-size: 25px;
+  font-weight: 500;
+  margin-left: 20rem;
+}
+
+.forms {
+  margin-left: 20rem;
+}
+
+.valorTotal {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 15rem;
+  margin-top: 1rem;
+}
