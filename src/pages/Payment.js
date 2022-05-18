@@ -137,7 +137,7 @@ class Payment extends Component {
             ))}
           </div>
           <div className="valorTotal">
-            { `Total da Compra: R$ ${total}` }
+            { `Total da Compra: R$ ${total.toFixed(2)}` }
           </div>
         </div>
         <div className="forms">

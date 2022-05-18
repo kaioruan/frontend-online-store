@@ -112,7 +112,7 @@ class Cart extends React.Component {
                   <div key={ value.id } className="listacarrinho">
                     <p data-testid="shopping-cart-product-name">{ value.title }</p>
                     <img src={ value.thumbnail } alt={ value.title } />
-                    <p>{ `R$: ${value.price * state[`${value.id}`]}` }</p>
+                    <p>{ `R$: ${(value.price * state[`${value.id}`]).toFixed(2)}` }</p>
                     <div className="buttons">
                       <button
                         type="button"
@@ -150,7 +150,7 @@ class Cart extends React.Component {
           </div>
         </div>
         <div className="finalizar">
-          <h1>{ `Total: R$${total}` }</h1>
+          <h1>{ `Total: R$${total.toFixed(2)}` }</h1>
           <Link to="/cart/payment">
             <button
               type="button"

@@ -39,7 +39,7 @@ class DetailsProduct extends Component {
                   {' '}
                   -R$:
                   {' '}
-                  { value.price }
+                  { value.price.toFixed(2) }
                 </p>
                 <div>
                   {
