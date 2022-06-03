@@ -1,10 +1,12 @@
 .payment {
   display: block;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .dados {
-  margin-left: 35rem;
+  display: inline-block;
+  margin-left: 20rem;
 }
 
 .dados h3 {

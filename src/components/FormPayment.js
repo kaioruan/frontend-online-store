@@ -148,7 +148,7 @@ class FormPayment extends Component {
             </select>
           </label>
         </fieldset>
-        <fieldset className="test">
+        <fieldset className="card-payment">
 
           <legend>Formas De Pagamento</legend>
 
