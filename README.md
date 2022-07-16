@@ -35,13 +35,16 @@ Praticar todas as habilidades desenvolvidas até agora no módulo de Front-End.
 ⚠ **Atenção:** ⚠
 
 Para rodar a aplicação é necessário executar o comando abaixo.
-
 Instalação de Dependência.
 ```sh
-npm start
+npm install
 ```
 ```sh
 npm install react-icons --save
+```
+Para rodar a aplicação é necessário executar o comando abaixo.
+```sh
+npm start
 ```
 ---
 # Requisitos desenvolvidos no projeto:
